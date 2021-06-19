@@ -13,7 +13,15 @@ function App() {
   return (
     // 화면을 렌더링 하기위해서는 View 태그가 필요하다. View는 화면을 채우는 컨테이너
     <View style={styles.mainView}>
-      <Text>Hello World</Text>
+      <View style={styles.subView}>
+        <Text style={styles.mainText}>Hello World</Text>
+      </View>
+      <View style={styles.subView}>
+        <Text>Hello World</Text>
+      </View>
+      <View style={styles.anotherSubView}>
+        <Text style={styles.mainText}>Hello World</Text>
+      </View>
     </View>
   );
 }
@@ -26,6 +34,26 @@ const styles = StyleSheet.create({
     marginTop: 50,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  subView: {
+    width: '50%',
+    flex: 1,
+    backgroundColor: 'yellow',
+    marginBottom: 10,
+  },
+  anotherSubView: {
+    flex: 2,
+    backgroundColor: 'yellow',
+    marginBottom: 10,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  mainText: {
+    fontSize: 50,
+    fontWeight: 'bold',
+    color: 'red',
+    padding: 20,
   },
 });
 
