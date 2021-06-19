@@ -6,22 +6,28 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import Header from './src/header';
 
 function App() {
+  const [appName, setAppName] = useState('My First App');
   return (
     // 화면을 렌더링 하기위해서는 View 태그가 필요하다. View는 화면을 채우는 컨테이너
     <View style={styles.mainView}>
-      <View style={styles.subView}>
+      {/* <Header name={appName} /> */}
+      <Text style={styles.mainText} onPress={() => alert('Hello World')}>
+        Hello World
+      </Text>
+      {/* <View style={styles.subView}>
         <Text style={styles.mainText}>Hello World</Text>
-      </View>
-      <View style={styles.subView}>
+      </View> */}
+      {/* <View style={styles.subView}>
         <Text>Hello World</Text>
       </View>
       <View style={styles.anotherSubView}>
         <Text style={styles.mainText}>Hello World</Text>
-      </View>
+      </View> */}
     </View>
   );
 }
@@ -30,14 +36,12 @@ function App() {
 const styles = StyleSheet.create({
   mainView: {
     flex: 1,
-    backgroundColor: 'green',
+    backgroundColor: 'white',
     marginTop: 50,
     alignItems: 'center',
     justifyContent: 'center',
   },
   subView: {
-    width: '50%',
-    flex: 1,
     backgroundColor: 'yellow',
     marginBottom: 10,
   },
@@ -50,8 +54,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   mainText: {
-    fontSize: 50,
-    fontWeight: 'bold',
+    fontSize: 20,
+    fontWeight: 'normal',
     color: 'red',
     padding: 20,
   },
