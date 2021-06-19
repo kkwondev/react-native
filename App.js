@@ -9,25 +9,32 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import Header from './src/header';
+import Generator from './src/generator';
+import NumList from './src/numlist';
 
 function App() {
   const [appName, setAppName] = useState('My First App');
+  const [random, setRandom] = useState([36, 999]);
+
+  const onAddRandomNum = () => {
+    const randomNum = Math.floor(Math.random() * 100) + 1;
+    setRandom([...random, randomNum]);
+  };
+
+  const onDeleteRandomNum = position => {
+    setRandom(random.filter((num, index) => position !== index));
+  };
   return (
     // 화면을 렌더링 하기위해서는 View 태그가 필요하다. View는 화면을 채우는 컨테이너
     <View style={styles.mainView}>
-      {/* <Header name={appName} /> */}
-      <Text style={styles.mainText} onPress={() => alert('Hello World')}>
-        Hello World
-      </Text>
-      {/* <View style={styles.subView}>
-        <Text style={styles.mainText}>Hello World</Text>
-      </View> */}
-      {/* <View style={styles.subView}>
-        <Text>Hello World</Text>
+      <Header name={appName} />
+      <View>
+        <Text style={styles.mainText} onPress={() => alert('Hello World')}>
+          Hello World
+        </Text>
       </View>
-      <View style={styles.anotherSubView}>
-        <Text style={styles.mainText}>Hello World</Text>
-      </View> */}
+      <Generator add={onAddRandomNum} />
+      <NumList num={random} deleteFunction={onDeleteRandomNum} />
     </View>
   );
 }
@@ -39,7 +46,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     marginTop: 50,
     alignItems: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'center',
   },
   subView: {
     backgroundColor: 'yellow',
